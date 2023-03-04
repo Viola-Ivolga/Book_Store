@@ -27,4 +27,11 @@ public class BookService {
     public void deleteById(int id){
         bRepo.deleteById(id);
     }
+
+
+
+    // ******* to add data to db **********//
+//    public void createBook(Book book){
+//        bRepo.save(book);
+//    }
 }

@@ -1,7 +1,8 @@
 package com.bookStore.service;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.bookStore.dto.UserRegistrationDto;
@@ -16,6 +17,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static com.bookStore.entity.Role.ROLE_USER;
+
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -26,7 +29,7 @@ public class UserServiceImpl implements UserService{
     private BCryptPasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository) {
-//        super();
+        super();
         this.userRepository = userRepository;
     }
 
@@ -34,9 +37,19 @@ public class UserServiceImpl implements UserService{
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+                passwordEncoder.encode(registrationDto.getPassword()), Set.of(ROLE_USER));
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User getById(Long id) {
+        return userRepository.findById(id).get();
     }
 
     @Override
@@ -50,7 +63,7 @@ public class UserServiceImpl implements UserService{
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
     }
 
 }

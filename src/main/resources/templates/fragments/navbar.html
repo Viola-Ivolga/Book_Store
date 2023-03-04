@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">Book Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="available_books">Available Books</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="my_books">My Books</a>
+                </li>
+                <li class="nav-item">
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a class="nav-link text-white" href="book_register">New Book Register</a>
+                    </div>
+                </li>
+                <li>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a class="nav-link text-white" href="user/available_users">User list</a>
+                    </div>
+                </li>
+            </ul>
+
+            <div>
+                <a class="nav-link text-white" th:href="@{/login}">Login</a>
+            </div>
+
+
+            <div>
+                <a class="nav-link text-white" th:href="@{/logout}">Logout</a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

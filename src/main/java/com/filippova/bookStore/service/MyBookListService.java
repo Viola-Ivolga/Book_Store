@@ -1,7 +1,7 @@
-package com.bookStore.service;
+package com.filippova.bookStore.service;
 
-import com.bookStore.entity.MyBookList;
-import com.bookStore.repository.MyBookRepository;
+import com.filippova.bookStore.entity.MyBookList;
+import com.filippova.bookStore.repository.MyBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

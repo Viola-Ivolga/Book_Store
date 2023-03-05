@@ -1,7 +1,7 @@
-package com.bookStore.service;
+package com.filippova.bookStore.service;
 
-import com.bookStore.dto.UserRegistrationDto;
-import com.bookStore.entity.User;
+import com.filippova.bookStore.dto.UserRegistrationDto;
+import com.filippova.bookStore.entity.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;

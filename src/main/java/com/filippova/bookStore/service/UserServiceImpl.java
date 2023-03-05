@@ -1,14 +1,13 @@
-package com.bookStore.service;
+package com.filippova.bookStore.service;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import com.bookStore.dto.UserRegistrationDto;
-import com.bookStore.entity.Role;
-import com.bookStore.entity.User;
-import com.bookStore.repository.UserRepository;
+import com.filippova.bookStore.dto.UserRegistrationDto;
+import com.filippova.bookStore.entity.Role;
+import com.filippova.bookStore.entity.User;
+import com.filippova.bookStore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,7 +16,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import static com.bookStore.entity.Role.ROLE_USER;
 
 
 @Service
@@ -37,7 +35,7 @@ public class UserServiceImpl implements UserService{
     public User save(UserRegistrationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), Set.of(ROLE_USER));
+                passwordEncoder.encode(registrationDto.getPassword()), Set.of(registrationDto.getRole()));
 
         return userRepository.save(user);
     }

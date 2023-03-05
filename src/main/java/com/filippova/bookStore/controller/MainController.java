@@ -1,13 +1,10 @@
-package com.bookStore.controller;
+package com.filippova.bookStore.controller;
 
-import com.bookStore.entity.Book;
-import com.bookStore.entity.MyBookList;
-import com.bookStore.service.BookService;
-import com.bookStore.service.MyBookListService;
+import com.filippova.bookStore.entity.Book;
+import com.filippova.bookStore.entity.MyBookList;
+import com.filippova.bookStore.service.BookService;
+import com.filippova.bookStore.service.MyBookListService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.server.authorization.AuthorizationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +19,6 @@ public class MainController {
     public String login() {
         return "login";
     }
-
 
     @Autowired
     private BookService service;
@@ -54,8 +50,6 @@ public class MainController {
     // Method to save the update/edit
     @PostMapping("/save")
     public String addBook(@ModelAttribute Book b){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String name = authentication.getName();
         service.save(b);
         return "redirect:/available_books";
 
@@ -87,9 +81,8 @@ public class MainController {
     @RequestMapping("/deleteBook/{id}")
     public String deleteBook(@PathVariable("id") int id){
         service.deleteById(id);
-//        Book b=service.getBookById(id);
-//        model.addAttribute("book",b);
         return "redirect:/available_books";
     }
+
 
 }

@@ -1,6 +1,6 @@
-package com.bookStore.config;
+package com.filippova.bookStore.config;
 
-import com.bookStore.service.UserService;
+import com.filippova.bookStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,24 +1,23 @@
-package com.bookStore.entity;
-
-
+package com.filippova.bookStore.entity;
 
 import java.util.Collection;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.JoinColumn;
 
 @Entity
-@Table(name =  "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name =  "user_table")
 public class User {
 
         @Id
@@ -35,21 +34,16 @@ public class User {
 
         private String password;
 
-        @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        @JoinTable(
-                name = "users_roles",
-                joinColumns = @JoinColumn(
-                        name = "user_id", referencedColumnName = "id"),
-                inverseJoinColumns = @JoinColumn(
-                        name = "role_id", referencedColumnName = "id"))
-
-        private Collection<Role> roles;
+        @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+        @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+        @Enumerated(EnumType.STRING)
+        private Set<Role> roles;
 
         public User() {
 
         }
 
-        public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+        public User(String firstName, String lastName, String email, String password, Set<Role> roles) {
                 super();
                 this.firstName = firstName;
                 this.lastName = lastName;
@@ -90,7 +84,7 @@ public class User {
         public Collection<Role> getRoles() {
                 return roles;
         }
-        public void setRoles(Collection<Role> roles) {
+        public void setRoles(Set<Role> roles) {
                 this.roles = roles;
         }
 

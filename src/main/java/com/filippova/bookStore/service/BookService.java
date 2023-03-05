@@ -1,7 +1,7 @@
-package com.bookStore.service;
+package com.filippova.bookStore.service;
 
-import com.bookStore.entity.Book;
-import com.bookStore.repository.BookRepository;
+import com.filippova.bookStore.entity.Book;
+import com.filippova.bookStore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +27,4 @@ public class BookService {
     public void deleteById(int id){
         bRepo.deleteById(id);
     }
-
-
-
-    // ******* to add data to db **********//
-//    public void createBook(Book book){
-//        bRepo.save(book);
-//    }
 }

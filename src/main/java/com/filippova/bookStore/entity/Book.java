@@ -1,32 +1,31 @@
-package com.bookStore.entity;
-
+package com.filippova.bookStore.entity;
 
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-
 
 @Entity
-@Table(name="MyBook")
-public class MyBookList {
+public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String author;
     private String price;
-    public MyBookList(){
-        super();
-    }
 
-    public MyBookList(int id, String name, String author, String price) {
+    public Book(int id, String name, String author, String price) {
         super();
         this.id = id;
         this.name = name;
         this.author = author;
         this.price = price;
+    }
+    public Book() {
+        super();
     }
 
     public int getId() {
@@ -61,4 +60,3 @@ public class MyBookList {
         this.price = price;
     }
 }
-

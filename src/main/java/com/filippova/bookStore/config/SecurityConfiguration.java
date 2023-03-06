@@ -12,8 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
-@EnableWebSecurity
+@Configuration   //This is a Spring annotation that marks this class as a configuration class.
+                 // Spring will automatically register beans defined in this class.
+
+
+@EnableWebSecurity  //This annotation is used to enable Spring Security for the application.
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired

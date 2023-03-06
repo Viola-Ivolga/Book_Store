@@ -38,7 +38,9 @@ public class MainController {
         return "bookRegister";
     }
 
-    // Method to return all books from the db on the web browser
+
+    //This method is mapped to the /available_books endpoint and
+    // returns the bookList view along with a list of all books in the database.
     @GetMapping("/available_books")
     public ModelAndView getAllBook(){
         List<Book> list = service.getAllBook();

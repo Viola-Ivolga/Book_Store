@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//For creating new user
 @Getter
 @Setter
 @NoArgsConstructor

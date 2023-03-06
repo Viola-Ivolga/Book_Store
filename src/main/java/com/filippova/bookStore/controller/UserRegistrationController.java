@@ -23,7 +23,8 @@ public class UserRegistrationController {
         super();
         this.userService = userService;
     }
-
+    // This method returns a new instance of the UserRegistrationDto class.
+    // It's called automatically by Spring MVC when the registration form is submitted.
     @ModelAttribute("user")
     public UserRegistrationDto userRegistrationDto() {
         return new UserRegistrationDto();

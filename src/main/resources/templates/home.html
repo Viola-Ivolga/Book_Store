@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="https://www.thymeleaf.com"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <!-- Required meta tags -->
@@ -58,9 +58,12 @@
 
 <div class="container text-center my-5">
     <h1>WELCOME TO NEW BOOK STORE</h1>
-    <img src="/images/books2.jpeg" alt="books" width="360px">
+    <p class="my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa dignissimos ea iure laudantium odit porro quas, repudiandae voluptatum. Adipisci aspernatur cum eius error eveniet facilis ipsam molestiae repudiandae velit vitae.</p>
+    <img src="/images/books2.jpeg" alt="books" width="500px">
 
 </div>
+
+<div th:replace="footer :: footer"></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

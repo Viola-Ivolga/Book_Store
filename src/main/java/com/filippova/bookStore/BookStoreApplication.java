@@ -23,13 +23,17 @@ import org.springframework.context.annotation.Bean;
 		@Bean
 		public CommandLineRunner initialCreate( ) {
 			return(args) ->{
-				Book b01 = new Book(1, "Library Management", "Explains how to implement library system","120");
+				Book b01 = new Book(1, "Effective Java", "Joshua Bloch","120");
 
 				bookService.save(b01);
 
-				Book b02 = new Book(2, "Information Management", "Teaches information system","150");
+				Book b02 = new Book(2, "Thinking in Java", "Bruce Eckel","150");
 
 				bookService.save(b02);
+
+				Book b03 = new Book(2, "Java: The Complete Reference", "Herbert Schildt","150");
+
+				bookService.save(b03);
 
 
 

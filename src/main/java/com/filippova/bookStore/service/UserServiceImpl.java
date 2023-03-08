@@ -30,9 +30,10 @@ public class UserServiceImpl implements UserService{
         super();
         this.userRepository = userRepository;
     }
-
+    // Method for saving new user to the db
     @Override
     public User save(UserRegistrationDto registrationDto) {
+        // created object user with parameters from registrationDto
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
                 passwordEncoder.encode(registrationDto.getPassword()), Set.of(registrationDto.getRole()));
